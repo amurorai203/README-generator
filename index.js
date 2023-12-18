@@ -17,12 +17,12 @@ const questions = [
     message: "Description of the project: ",
 },
 {
-    type: 'input',
+    type: 'editor',
     name: 'installation',
     message: "Installation Dependencies: ",
 },
 {
-    type: 'input',
+    type: 'editor',
     name: 'usage',
     message: "Usage: ",
 },
@@ -60,7 +60,7 @@ const questions = [
         default: 'MIT'
 },
 {
-    type: 'input',
+    type: 'editor',
     name: 'contributing',
     message: "Contributing: ",
 },
@@ -83,7 +83,7 @@ const questions = [
 
 // function to write README file
 function writeToFile(fileName, data) {
-    console.log(data);
+    // console.log(data);
     fs.writeFile(fileName, data, (err) => {
         if (err) console.log(err);
     });
@@ -93,7 +93,6 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(questions).then((answers) => {
         let htmlString = generateMarkdown(answers);
-        console.log(htmlString);
         writeToFile(outputFile, htmlString);
     })
     .then(() => console.log("Done"))
